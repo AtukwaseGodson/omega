@@ -1,0 +1,287 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6; 
+    color: #333;
+    font-size: 16px;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+}
+header {
+    background: #004466;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    height: 280px; /* Set the height of the header */
+}
+header h1 {
+    font-size: 2.5rem;
+}
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure it stays above other content */
+    transition: top 0.3s; /* Smooth transition for fixed position */
+    position: relative; /* Default position */
+}
+.topnav.fixed {
+    position: fixed; /* Fix the nav at the top */
+    top: 0; /* Align to the top */
+}
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.topnav .icon {
+    display: none; /* Hide icon by default */
+}
+nav {
+    display: flex;
+    justify-content: center;
+    background: #003355;
+}
+nav a {
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    background: #002244;
+}
+.hero {
+    background: url('https://source.unsplash.com/construction-site') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 5rem 0;
+}
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+@keyframes moveFromRight {
+    0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%); /* Move off-screen to the left */
+    }
+}
+
+.hero h2#animated {
+    color: hwb(200 3% 35%);
+    display: inline-block; /* Ensure the element can be animated */
+    animation: moveFromRight 30s linear infinite; /* Apply the animation */
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+section {
+    padding: 4rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; 
+}
+section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #004466;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between cards */
+}
+#vision .card{
+    top: 100px;
+}
+.card {
+    background: #f0f8ff;
+    padding: 2rem;          
+    top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.card h3 {
+    color: #004466;
+}
+
+#projects{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #004466;
+    color: white;
+}
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    nav a { text-align: center;
+        padding: 1rem; }
+    }
+.pattern {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Space between cards */
+}
+#our-team .pattern .card {
+    background: #f0f8ff; /* Light background for cards */
+    padding: 1.5rem; /* Reduced padding for a more compact look */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Slightly stronger shadow */
+    text-align: center; /* Center text in cards */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+#our-team .pattern .card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+}
+#our-team .pattern .card img {
+    border-radius: 50%; /* Make images circular */
+    width: 100px; /* Fixed width for images */
+    height: 100px; /* Fixed height for images */
+    object-fit: cover; /* Ensure images cover the area */
+}
+.contact-cards {
+    gap: 2rem;
+    display: flex;
+    justify-content: space-around; /* Space between cards */
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    margin: 2rem 0; /* Margin around the cards section */
+}
+
+.card h3 {
+    color: #004466; /* Header color */
+}
+.card a {
+    padding: 10px;
+    border-radius: 6px;
+    color: #004466; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+.card a:hover {
+    text-decoration: none;
+    background-color: #92d5f7;
+
+}
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none; /* Hide links on small screens */
+    }
+    .topnav a.icon {
+        float: right;
+        display: block; /* Show icon on small screens */
+    }
+    .contact-cards{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (max-width: 600px) {
+    .topnav.responsive {
+        position: fixed; /* Fix the nav at the top when responsive */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        right: 0; /* Align to the right */
+        background-color: #333; /* Ensure background color is consistent */
+        z-index: 1000; /* Ensure it stays above other content */
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block; /* Show links in block on small screens */
+        text-align: left;
+    }
+}
+#showMoreBtn {
+    background-color: #004466; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 20px; /* Space above the button */
+}
+
+#showMoreBtn:hover {
+    background-color: #003355; /* Darker shade on hover */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    top:0px;
+    margin: 50px auto;
+    /* padding: 20px; */
+}
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.message {
+    margin-top: 10px;
+    display: none;
+    padding: 10px;
+    border-radius: 4px;
+}
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
