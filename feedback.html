@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
+    <title>Omega-Contact us</title>
+    <link rel="icon" href="ohm icon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -32,20 +33,11 @@
                 <h2>Our Physical Location</h2>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.27871612685!2d32.376649597265626!3d0.3132008000000213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177da3a6ad69dd49%3A0xef1647bc20af1dfe!2sOmega%20Construction%20Ltd!5e0!3m2!1sen!2sug!4v1748346874077!5m2!1sen!2sug" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="card">
-                <h3>Our Social Media</h3>
-                <ul>
-                    <li><a href="https://www.WhatsApp.com/in/yourprofile" target="_blank">WhatsApp</a></li>
-                    <li><a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.twitter.com/yourprofile" target="_blank">Twitter</a></li>
-                    <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
-                    
-                </ul>
-            </div>
         </div>
-    </section style="width: 75%;" >
-    <h2>Send Us Your Feedback</h2>
-    <form id="feedbackForm">
+    </section>
+    
+    <h2 style="text-align: center;">Send Us Your Feedback</h2><br><br>
+    <form id="feedbackForm" style="width: 75%; margin: 0 auto;">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -58,19 +50,40 @@
             <label for="message">Feedback:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <button type="submit" onclick="sendMail(event)">Send Feedback</button>
-    </form>
+        <button type="submit" id="submitBtn" onclick="sendMail(event)" style="background-color: #007bff; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em; margin-top: 10px;">Send Feedback</button>
+    </form><br><br>
     <div id="responseMessage" class="message"></div>
     <footer id="footer"></footer>
     <script>
         function sendMail(e){
             e.preventDefault();
+            // Validate form fields
+            let name = document.getElementById('name').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let message = document.getElementById('message').value.trim();
+            let submitButton = document.getElementById('submitBtn');
+            
+            if (!name || !email || !message) {
+                alert("Please fill in all fields before sending your feedback.");
+                return;
+            }
+            // Validate email format
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            // Disable the submit button to prevent multiple submissions
+            submitButton.disabled = true;
+            
+            submitButton.textContent = 'Sending...';
             let form = document.getElementById('feedbackForm');
+
             emailjs.sendForm('service_v0o3m1o', 'template_56cq124', form).then(function(response){
-                alert("Email sent");
+                alert("Email sent successfully!");
+                submitButton.textContent = 'Email sent';
             }, function(error){
                 alert("Email not sent  " + error);
-                
             });
         }
     </script>

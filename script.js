@@ -1,4 +1,3 @@
-
 // Function to load and insert HTML content
 async function loadComponent(elementId, filePath) {
     try {
@@ -17,20 +16,29 @@ document.addEventListener('DOMContentLoaded', () => {
     loadComponent('footer', 'footer.html');
 });
 
-//sticky nav
-window.onscroll = function() {stickyNav()};
+window.onscroll = function() {
+    stickyNav();
+};
 
+// Get the navbar element by its ID
 var navbar = document.getElementById("myTopnav");
-var sticky = navbar.offsetTop; // Get the offset position of the navbar
+// Get the initial offset position of the navbar (though not directly used in this specific scroll check)
+var sticky = navbar.offsetTop;
 
+// Function to handle the sticky behavior of the navigation bar
 function stickyNav() {
-    if (window.pageYOffset > sticky) {
-        navbar.classList.add("fixed"); // Add the fixed class when you reach its scroll position
+    // Check if the vertical scroll position is greater than 0
+    if (window.scrollY > 0) {
+        // If scrolled down, add the 'fixed' class to make the navbar fixed
+        navbar.classList.add("fixed");
     } else {
-        navbar.classList.remove("fixed"); // Remove the fixed class when you leave the scroll position
+        // If at the top of the page, remove the 'fixed' class
+        navbar.classList.remove("fixed");
     }
 }
 
+// Call stickyNav once on load to set the initial state if the page is loaded scrolled
+stickyNav();
 function toggleNav() {
     var nav = document.getElementById("myTopnav");
     nav.classList.toggle("responsive"); // Toggle the responsive class
