@@ -17,7 +17,7 @@ header {
     color: white;
     text-align: center;
     padding: 2rem 0;
-    height: 280px; /* Set the height of the header */
+    height: 20px; /* Set the height of the header */
 }
 header h1 {
     font-size: 2.5rem;
@@ -137,11 +137,6 @@ section h2 {
     border-radius: 8px;
 }
 
-footer {
-    text-align: center;
-    background: #004466;
-    color: white;
-}
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -156,38 +151,38 @@ footer {
     gap: 2rem; /* Space between cards */
 }
 #our-team .pattern .card {
-    background: #f0f8ff; /* Light background for cards */
-    padding: 1.5rem; /* Reduced padding for a more compact look */
+    background: #f0f8ff; 
+    padding: 1.5rem; 
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Slightly stronger shadow */
-    text-align: center; /* Center text in cards */
-    transition: transform 0.3s; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+    text-align: center; 
+    transition: transform 0.3s; 
 }
 #our-team .pattern .card:hover {
-    transform: scale(1.05); /* Slightly enlarge card on hover */
+    transform: scale(1.05); 
 }
 #our-team .pattern .card img {
-    border-radius: 50%; /* Make images circular */
-    width: 100px; /* Fixed width for images */
-    height: 100px; /* Fixed height for images */
-    object-fit: cover; /* Ensure images cover the area */
+    border-radius: 50%; 
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
 }
 .contact-cards {
     gap: 2rem;
     display: flex;
-    justify-content: space-around; /* Space between cards */
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-    margin: 2rem 0; /* Margin around the cards section */
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    margin: 2rem 0; 
 }
 
 .card h3 {
-    color: #004466; /* Header color */
+    color: #004466; 
 }
 .card a {
     padding: 10px;
     border-radius: 6px;
-    color: #004466; /* Link color */
-    text-decoration: none; /* Remove underline from links */
+    color: #004466; 
+    text-decoration: none; 
 }
 .card a:hover {
     text-decoration: none;
@@ -210,16 +205,16 @@ footer {
 }
 @media screen and (max-width: 600px) {
     .topnav.responsive {
-        position: fixed; /* Fix the nav at the top when responsive */
-        top: 0; /* Align to the top */
-        left: 0; /* Align to the left */
-        right: 0; /* Align to the right */
-        background-color: #333; /* Ensure background color is consistent */
-        z-index: 1000; /* Ensure it stays above other content */
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        background-color: #333; 
+        z-index: 1000; 
     }
     .topnav.responsive a {
         float: none;
-        display: block; /* Show links in block on small screens */
+        display: block; 
         text-align: left;
     }
 }
@@ -227,14 +222,14 @@ footer {
     background-color: #004466; 
     color: white; 
     border: none; 
-    padding: 10px 20px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-top: 20px; /* Space above the button */
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-top: 20px; 
 }
 
 #showMoreBtn:hover {
-    background-color: #003355; /* Darker shade on hover */
+    background-color: #003355; 
 }
 
 .form-group {
@@ -316,8 +311,32 @@ button:hover {
 }
 
 .fixed {
-    position: fixed; /* Fixes the navbar to the top of the viewport */
-    top: 0; /* Positions it at the very top */
-    width: 100%; /* Ensures it spans the full width of the viewport */
-    z-index: 1000; /* Keeps it above other content */
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+}    
+footer {
+    background-color: #4e555c;
+    padding: 20px;
+    color: #ffffff;
+}
+footer ul {
+    padding: 0; 
+}
+footer ul li {
+    display: block;
+    margin: 10px; 
+    margin-top: 22px;
+}
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 10px 15px; 
+    transition: background-color 0.3s; 
+}
+footer a:hover {
+    background-color: #0056b3; 
 }
