@@ -281,7 +281,7 @@ button:hover {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #46686d;
-    width: 75%;
+    width: 90%;
 }
   
   /* Style the buttons that are used to open the tab content */
@@ -291,7 +291,7 @@ button:hover {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 14px 8px;
     transition: 0.3s;
     width: 20%;
 }
