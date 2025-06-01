@@ -40,7 +40,11 @@ function stickyNav() {
 stickyNav();
 function toggleNav() {
     var nav = document.getElementById("myTopnav");
-    nav.classList.toggle("responsive"); // Toggle the responsive class
+    if (nav.className === "topnav") {
+        nav.className += " responsive"; // Add the responsive class
+    } else {
+        nav.className = "topnav"; // Remove the responsive class
+    }
 }
 
 // Hide the navigation when a link is clicked
