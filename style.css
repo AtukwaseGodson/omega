@@ -17,17 +17,18 @@ header {
     color: white;
     text-align: center;
     padding: 2rem 0;
-    height: 20px; /* Set the height of the header */
+    height: 250px; /* Set the height of the header */
 }
 header h1 {
     font-size: 2.5rem;
 }
 .topnav {
     overflow: hidden;
+    top: 0px;
+    height: 80px;
     background-color: #333;
-    width: 100%; /* Full width */
-    z-index: 1000; /* Ensure it stays above other content */
-    transition: top 0.3s; /* Smooth transition for fixed position */
+    width: 100%; /* Full width */ /* Ensure it stays above other content */
+    transition: top 0.5s; /* Smooth transition for fixed position */
     position: relative; /* Default position */
 }
 .topnav.fixed {
@@ -66,7 +67,7 @@ nav a:hover {
 }
 .hero {
     background: url('https://source.unsplash.com/construction-site') no-repeat center center/cover;
-    color: white;
+    color: rgb(5, 5, 5);
     text-align: center;
     padding: 5rem 0;
 }
@@ -96,6 +97,7 @@ section {
     padding: 4rem 2rem;
     max-width: 1300px;
     margin: 0 auto;
+    color: #070606;
     display: flex; /* Use flexbox to center content */
     flex-direction: column; /* Stack children vertically */
     justify-content: center; /* Center content vertically */
@@ -118,6 +120,7 @@ section h2 {
     background: #f0f8ff;
     padding: 2rem;          
     top: 60px;
+    color: #070606;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -154,6 +157,7 @@ section h2 {
     background: #f0f8ff; 
     padding: 1.5rem; 
     border-radius: 8px;
+    color: #070606;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
     text-align: center; 
     transition: transform 0.3s; 
@@ -317,26 +321,37 @@ button:hover {
     z-index: 1000; 
 }    
 footer {
-    background-color: #4e555c;
+    background-color: #737374; 
     padding: 20px;
-    color: #ffffff;
+    color: #ffffff; 
+    text-align: center; 
 }
+footer section{
+    display: flex;
+    flex-direction: row;
+}
+footer h3 {
+    margin: 10px 0; 
+}
+
 footer ul {
     padding: 0; 
+    list-style-type: none; 
 }
+
 footer ul li {
-    display: block;
-    margin: 10px; 
-    margin-top: 22px;
+    margin: 15px;
 }
+
 footer a {
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #007bff;
-    border-radius: 5px;
+    text-decoration: none; 
+    color: #ffffff; 
+    background-color: #007bff; 
+    border-radius: 5px; 
     padding: 10px 15px; 
     transition: background-color 0.3s; 
 }
+
 footer a:hover {
     background-color: #0056b3; 
 }
