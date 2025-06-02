@@ -92,4 +92,25 @@ function openTab(evt, tabName) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+}
+
+// Simulate a click on the tab link to open it
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the URL contains a hash, 
+    if (window.location.hash) {
+        // Get the ID from the hash, 
+        const tabId = window.location.hash.substring(1);
+
+        // Get all elements with class="tabcontent" and hide them
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get the specific tab content to display
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+            targetTab.style.display = "block";
+        }
+    }
+});
