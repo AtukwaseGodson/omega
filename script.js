@@ -13,37 +13,40 @@ async function loadComponent(elementId, filePath) {
 // Load header and footer
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('footer', 'footer.html');
+    
+    // Initialize navbar and sticky nav functionality
+    const navbar = document.getElementById("myTopnav");
+    if (navbar) {
+        const sticky = navbar.offsetTop;
+        
+        // Function to handle the sticky behavior of the navigation bar
+        function stickyNav() {
+            if (window.scrollY > 0) {
+                navbar.classList.add("fixed");
+            } else {
+                navbar.classList.remove("fixed");
+            }
+        }
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', stickyNav);
+        
+        // Call stickyNav once on load to set the initial state
+        stickyNav();
+    }
 });
 
-window.onscroll = function() {
-    stickyNav();
-};
-
-// Get the navbar element by its ID
-var navbar = document.getElementById("myTopnav");
-// Get the initial offset position of the navbar (though not directly used in this specific scroll check)
-var sticky = navbar.offsetTop;
-
-// Function to handle the sticky behavior of the navigation bar
-function stickyNav() {
-    // Check if the vertical scroll position is greater than 0
-    if (window.scrollY > 0) {
-        // If scrolled down, add the 'fixed' class to make the navbar fixed
-        navbar.classList.add("fixed");
-    } else {
-        // If at the top of the page, remove the 'fixed' class
-        navbar.classList.remove("fixed");
-    }
-}
-
-// Call stickyNav once on load to set the initial state if the page is loaded scrolled
-stickyNav();
 function toggleNav() {
     var nav = document.getElementById("myTopnav");
     if (nav.className === "topnav") {
-        nav.className += " responsive"; // Add the responsive class
+        nav.className += " responsive";
+        // Scroll to top when opening the menu
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     } else {
-        nav.className = "topnav"; // Remove the responsive class
+        nav.className = "topnav";
     }
 }
 
