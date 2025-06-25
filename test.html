@@ -1,0 +1,89 @@
+<section id="recent-posts">
+    <h2>Recent Blog Posts</h2>
+    <div class="posts-container"></div>
+</section>
+
+<section id="featured-projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-container"></div>
+</section>
+
+<section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials-slider"></div>
+</section>
+
+<script>
+    // blog-data.js (or directly in your HTML)
+    const blogPosts = [
+        { title: "Our Latest Innovation", snippet: "Discover how our new solution...", link: "blog/innovation.html", image: "img/blog1.jpg" },
+        { title: "Client Success Story", snippet: "Learn about John Doe's journey...", link: "blog/success.html", image: "img/blog2.jpg" },
+        // ... more posts
+    ];
+
+    const featuredProjects = [
+        { name: "Website Redesign for ABC Corp", description: "A modern, responsive website...", link: "projects/abc-corp.html", image: "img/project1.jpg" },
+        { name: "Mobile App for XYZ Startup", description: "An intuitive mobile application...", link: "projects/xyz-app.html", image: "img/project2.jpg" },
+        // ... more projects
+    ];
+
+    const testimonials = [
+        { quote: "Outstanding service and results!", author: "Jane Doe, CEO of ExampleCo" },
+        { quote: "Highly recommend their expertise.", author: "Mark Smith, Founder of StartupX" },
+        // ... more testimonials
+    ];
+
+    function renderContent(containerId, dataArray, templateFn) {
+        const container = document.querySelector(containerId);
+        if (!container) return; // Ensure container exists
+        container.innerHTML = dataArray.map(templateFn).join('');
+    }
+
+    // Example templates
+    const blogPostTemplate = (post) => `
+        <article class="blog-card">
+            <img src="<span class="math-inline">\{post\.image\}" alt\="</span>{post.title}">
+            <h3><a href="<span class="math-inline">\{post\.link\}"\></span>{post.title}</a></h3>
+            <p>${post.snippet}</p>
+        </article>
+    `;
+
+    const projectTemplate = (project) => `
+        <div class="project-card">
+            <img src="<span class="math-inline">\{project\.image\}" alt\="</span>{project.name}">
+            <h4><a href="<span class="math-inline">\{project\.link\}"\></span>{project.name}</a></h4>
+            <p>${project.description}</p>
+        </div>
+    `;
+
+    const testimonialTemplate = (testimonial) => `
+        <div class="testimonial-item">
+            <blockquote>"${testimonial.quote}"</blockquote>
+            <cite>- ${testimonial.author}</cite>
+        </div>
+    `;
+
+    // Call on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderContent('.posts-container', blogPosts, blogPostTemplate);
+        renderContent('.projects-container', featuredProjects, projectTemplate);
+
+        // For testimonials, you might want a slider
+        const testimonialsContainer = document.querySelector('.testimonials-slider');
+        if (testimonialsContainer) {
+            testimonialsContainer.innerHTML = testimonials.map(testimonialTemplate).join('');
+            // Initialize a simple JS slider here (e.g., custom code or a lightweight library like Swiper.js without its backend features)
+            // For a simple rotate:
+            let currentTestimonial = 0;
+            const items = testimonialsContainer.querySelectorAll('.testimonial-item');
+            if (items.length > 0) {
+                items[0].style.display = 'block'; // Show first one
+                setInterval(() => {
+                    items[currentTestimonial].style.display = 'none';
+                    currentTestimonial = (currentTestimonial + 1) % items.length;
+                    items[currentTestimonial].style.display = 'block';
+                }, 5000); // Change every 5 seconds
+            }
+        }
+    });
+</script>

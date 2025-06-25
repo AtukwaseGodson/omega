@@ -6,11 +6,62 @@
     <title>Omega (U) Limited - Home</title>
     <link rel="icon" href="ohm icon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.7s ease-out forwards;
+        }
+
+        .slide-out {
+            animation: slideOut 0.7s ease-in forwards;
+        }
+
+        /* Ensure smooth transitions for layout elements */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Responsive styling for the main content container */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 70%; /* Larger width for md and up */
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 60%; /* Even larger for lg and up */
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="omega logo.png" alt="Omega (U) Limited" style="height: 100px; border-radius: 48%;">
+        <img src="omega logo.png" alt="Omega (U) Limited" style="height: 100px; border-radius: 48%;" loading="lazy">
         <h1>Omega (U) Limited</h1>
         <p>"Building for Generations"</p>
         <nav class="topnav" id="myTopnav">
@@ -68,27 +119,44 @@
         <div class="project-grid">
             <div class="project-item">
                 <h3>Apartment Complex in Wakiso</h3>
-                <img src="apartments in wakiso.jpeg" alt="Apartment Complex" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="apartments in wakiso.jpeg" alt="Apartment Complex" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
             </div>
             <div class="project-item">
                 <h3>Health Unit at Cyanika Border</h3>
-                <img src="health unit at cyanika border.jpeg" alt="Health Unit" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="health unit at cyanika border.jpeg" alt="Health Unit" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
             </div>
             <div class="project-item">
                 <h3>Gulu Regional Referral Hospital</h3>
-                <img src="Gulu regional referral.png" alt="Gulu Regional Referral Hospital" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="Gulu regional referral.png" alt="Gulu Regional Referral Hospital" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
             </div>
         </div>
         <a href="projects.html" class="cta-button">View All Projects</a>
     </section>
 
-    <section class="testimonials">
-        <h2>What Our Clients Say</h2>
-        <blockquote>
-            <p>"Omega (U) Limited delivered our project on time and exceeded our expectations!"</p>
-            <footer style="text-align: right;">- Client Name</footer>
-        </blockquote>
-    </section>
+
+    <div class="container bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-12 text-center text-white relative overflow-hidden w-full max-w-3xl mx-auto">
+        <!-- Overlay for subtle texture -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-transparent to-gray-900 opacity-20 rounded-3xl pointer-events-none"></div>
+
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 leading-tight text-gray-900">
+                What Our Clients Say
+            </h1>
+
+            <div id="testimonial-container" class="min-h-[180px] flex flex-col justify-center items-center">
+                <blockquote id="animated-quote" class="text-lg md:text-xl italic mb-4 opacity-90 transition-all duration-700 ease-in-out text-gray-900">
+                    "Omega Construction transformed our vision into a stunning reality. Their professionalism, attention to detail, and commitment to quality are truly unmatched."
+                </blockquote>
+                <p id="animated-author" class="text-md md:text-lg font-semibold opacity-80 transition-all duration-700 ease-in-out text-gray-700">
+                    - John & Jane Doe, Homeowners
+                </p>
+            </div>
+
+            <button class="mt-8 bg-gradient-to-r from-blue-500 to-indigo-700 hover:from-blue-600 hover:to-indigo-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50">
+                Learn More About Our Projects
+            </button>
+        </div>
+    </div>
 
     <section class="contact">
         <h2>Contact Us</h2>
@@ -98,5 +166,75 @@
 
     <footer id="footer"></footer>
 </body>
+    <script src="script.js"></script>
+
+    <script>
+        // Animated Testimonials for index.html
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Testimonials data
+            const testimonials = [
+                {
+                    quote: "Omega Construction transformed our vision into a stunning reality. Their professionalism, attention to detail, and commitment to quality are truly unmatched.",
+                    author: "John & Jane Doe, Homeowners"
+                },
+                {
+                    quote: "Working with Omega was a seamless experience. They delivered our commercial complex on time and within budget, exceeding all expectations. Highly recommended!",
+                    author: "Sarah Chen, Business Owner"
+                },
+                {
+                    quote: "The team at Omega is simply incredible. From concept to completion, they were responsive, innovative, and dedicated to achieving the perfect result for our renovation.",
+                    author: "Michael & Emily Brown, Residential Clients"
+                },
+                {
+                    quote: "As an architect, I appreciate Omega's meticulous craftsmanship and adherence to design principles. They are true partners in building excellence.",
+                    author: "David Lee, Architect"
+                },
+                {
+                    quote: "Choosing Omega Construction was the best decision for our new home. The quality of their work speaks for itself, and their customer service is outstanding.",
+                    author: "Maria Rodriguez, New Homeowner"
+                }
+            ];
+
+            let currentIndex = 0;
+            const quoteElement = document.getElementById("animated-quote");
+            const authorElement = document.getElementById("animated-author");
+            const testimonialContainer = document.getElementById("testimonial-container");
+
+            // Initial display of the first testimonial
+            quoteElement.textContent = `"${testimonials[currentIndex].quote}"`;
+            authorElement.textContent = `- ${testimonials[currentIndex].author}`;
+
+            function changeTestimonial() {
+                // Apply slide-out animation to both quote and author
+                quoteElement.classList.add("slide-out");
+                authorElement.classList.add("slide-out");
+
+                setTimeout(() => {
+                    // Update content after slide-out completes
+                    currentIndex = (currentIndex + 1) % testimonials.length;
+                    quoteElement.textContent = `"${testimonials[currentIndex].quote}"`;
+                    authorElement.textContent = `- ${testimonials[currentIndex].author}`;
+
+                    // Remove slide-out and add slide-in for the new content
+                    quoteElement.classList.remove("slide-out");
+                    authorElement.classList.remove("slide-out");
+                    quoteElement.classList.add("slide-in");
+                    authorElement.classList.add("slide-in");
+                }, 700); // Wait for slide-out animation to complete (0.7s)
+
+                // Remove slide-in class after animation completes (relative to slide-in start)
+                setTimeout(() => {
+                    quoteElement.classList.remove("slide-in");
+                    authorElement.classList.remove("slide-in");
+                }, 1400); // 0.7s for slide-out + 0.7s for slide-in = 1.4s total for one full transition cycle
+            }
+
+            // Change testimonial every 5 seconds (5000ms)
+            // This delay should be long enough for the slide-out and slide-in animations to complete
+            setInterval(changeTestimonial, 5000);
+        });
+    </script>
+    
 </html>
 
