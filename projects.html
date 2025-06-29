@@ -29,25 +29,33 @@
     </section>
     <section id="projects" style="margin-top: 100px;">
         <h2>Our Projects</h2>
+        <div class="category-filters" style="margin-bottom: 20px;">
+            <button class="filter-btn active" data-category="all">All Projects</button>
+            <button class="filter-btn" data-category="Mechanical">Mechanical</button>
+            <button class="filter-btn" data-category="Building">Building</button>
+            <button class="filter-btn" data-category="Roads">Roads</button>
+            <button class="filter-btn" data-category="Water">Water</button>
+            <button class="filter-btn" data-category="Consultancy">Consultancy</button>
+        </div>
         <div class="grid" id="projectGrid">
-            <div class="card">
+            <div class="card" data-category="Building">
                 <h3>Apartment Construction</h3>
                 <img src="apartments in wakiso.jpeg" alt="apartments in wakiso"style="width: 100%;" loading="lazy">
                 <p>20-unit apartments in Wakiso District</p>
             </div>
 
-            <div class="card">
+            <div class="card" data-category="Building">
                 <h3>Health Unit Construction</h3>
                 <img src="health unit at cyanika border.jpeg" alt="health unit at cyanika border" style="width: 100%;" loading="lazy">
                 <p>Health unit at Cyanika Border</p>
             </div>
 
-            <div class="card" style="display: none;">
+            <div class="card" data-category="Consultancy">
                 <h3>Consultancy Projects</h3>
                 <p>Investment appraisal for Zombo Tea Factory</p>
             </div>
 
-            <div class="card" style="display: none;">
+            <div class="card" data-category="Building">
                 <h3>Health Unit Construction</h3>
                 <img src="Gulu regional referral.png" alt="Gulu Regional Referral hospital Main stores"style="width: 100%;" loading="lazy">
                 <p>Construction of Gulu Regional Referral hospital Main stores</p>
@@ -55,11 +63,29 @@
 
             <!-- Add more projects here, initially hidden -->
         </div>
-        <button id="showMoreBtn">Show More</button>
     </section>
     <footer id="footer"></footer>
     
 </body>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const menuItems = document.querySelectorAll(".grid .card");
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const category = this.getAttribute("data-category");
+                    menuItems.forEach(item => {
+                        if (category === "all" || item.getAttribute("data-category") === category) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </html>
 
